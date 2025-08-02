@@ -1,5 +1,6 @@
 import bcrypt
 import os
+import certifi
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -7,12 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
 
-# MongoDB setup
-client = MongoClient(MONGO_URI)
+# MongoDB setup with certifi for SSL
+client = MongoClient(MONGO_URI, tls=True, tlsCAFile=certifi.where())
 db = client["mindmemosDB"]
 users_collection = db["users"]
 
-#AUTH FUNCTIONS 
+# ========================== AUTH FUNCTIONS ==============================
 
 def hash_password(password: str) -> bytes:
     """Hash password using bcrypt"""

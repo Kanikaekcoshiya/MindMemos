@@ -1,9 +1,9 @@
 streamlit
 pymongo
-python-dotenv
 bcrypt
-pypdf2
+python-dotenv
+PyPDF2
 python-docx
 reportlab
 google-generativeai
-
+certifi
